@@ -13,10 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        navigationController?.navigationBar.barTintColor = UIColor.green
+    navigationController?.navigationBar.barTintColor = UIColor.darkGray
+
+    UIApplication.shared.statusBarView?.backgroundColor = .lightGray
     }
-
-
 }
 
+extension UIApplication {
+    var statusBarView: UIView? {
+        if responds(to: Selector(("statusBar"))) {
+            return value(forKey: "statusBar") as? UIView
+        }
+        return nil
+    }
+}
